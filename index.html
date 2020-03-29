@@ -43,16 +43,28 @@
                                     window.mozRequestAnimationFrame || 
                                     window.webkitRequestAnimationFrame || 
                                     window.msRequestAnimationFrame;
+
+        var xspeed = 0.1;
+        var yspeed = 0.1;
+
         function drawShip(){
             ctx.clearRect(0, 0, cWidth, cHeight);
             ctx.fillStyle = "#FF0000";
             ctx.fillRect(centerWidthPosition,centerHeightPosition,shipWidth,shipHeight);
-            
-                centerWidthPosition--;
-                if (centerWidthPosition < 400){
-                    ++centerWidthPosition;
-                }
 
+            centerWidthPosition += xspeed;
+            centerHeightPosition += yspeed;
+            console.log(centerHeightPosition);
+            console.log(centerWidthPosition);
+    
+
+            if (centerWidthPosition > 660 || centerWidthPosition < 620){ 
+                xspeed *= -1; // change velocity direction
+            }
+            if (centerHeightPosition > 240 || centerHeightPosition < 200){ 
+                yspeed *= -1; // change velocity direction
+            }
+       
             requestAnimationFrame(drawShip);
         }
         drawShip();
