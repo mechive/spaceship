@@ -39,9 +39,24 @@
         var centerWidthPosition = (cWidth / 2) - (shipWidth / 2);
         var centerHeightPosition = (cHeight / 2) - (shipHeight / 2);
 
-        // Drawing the ship to the canvas
-        ctx.fillStyle = "#FF0000";
-        ctx.fillRect(centerWidthPosition,centerHeightPosition,shipWidth,shipHeight);
+        var requestAnimationFrame = window.requestAnimationFrame || 
+                                    window.mozRequestAnimationFrame || 
+                                    window.webkitRequestAnimationFrame || 
+                                    window.msRequestAnimationFrame;
+        function drawShip(){
+            ctx.clearRect(0, 0, cWidth, cHeight);
+            ctx.fillStyle = "#FF0000";
+            ctx.fillRect(centerWidthPosition,centerHeightPosition,shipWidth,shipHeight);
+            
+                centerWidthPosition--;
+                if (centerWidthPosition < 400){
+                    ++centerWidthPosition;
+                }
+
+            requestAnimationFrame(drawShip);
+        }
+        drawShip();
+
     </script>
 </body>
 </html>
