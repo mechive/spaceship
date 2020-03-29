@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spaceship game</title>
+</head>
+<style>
+    body{
+        background-color:black;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height:100vh;
+    }
+    #myCanvas{
+        margin-left:auto;
+        margin-right: auto;
+    }
+</style>
+<body>
+    <canvas id="myCanvas" width="1500" height="500" style="border:1px solid #c3c3c3;">
+        Your browser does not support the canvas element.
+    </canvas>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        
+        // Spaceship structure 
+        var shipWidth = 250;
+        var shipHeight = 100;
+
+        // Canvas parameters
+        var cWidth = canvas.width;
+        var cHeight = canvas.height;
+
+        // Positioning variables 
+        var centerWidthPosition = (cWidth / 2) - (shipWidth / 2);
+        var centerHeightPosition = (cHeight / 2) - (shipHeight / 2);
+
+        // Drawing the ship to the canvas
+        ctx.fillStyle = "#FF0000";
+        ctx.fillRect(centerWidthPosition,centerHeightPosition,shipWidth,shipHeight);
+    </script>
+</body>
+</html>
